@@ -32,7 +32,7 @@ export const SignUp = ({ signUp, onLogInClick, signInWithGoogle }) => {
         }}
       />
       <span>
-        Already have account? <a onClick={onLogInClick}>LognIn</a>
+        Already have account? <p onClick={onLogInClick}>LognIn</p>
       </span>
     </form>
   );

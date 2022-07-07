@@ -29,7 +29,7 @@ export const Login = ({ onSignUpClick, signInWithGoogle, logIn }) => {
       <h1 id="or">OR</h1>
       <GoogleButton onClick={signInWithGoogle} />
       <span>
-        Create account? <a onClick={onSignUpClick}>SignIn</a>
+        Create account? <p onClick={onSignUpClick}>SignIn</p>
       </span>
     </form>
   );

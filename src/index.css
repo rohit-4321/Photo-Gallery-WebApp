@@ -250,3 +250,9 @@ label:hover{
   font-family: sans-serif;
   font-size: 1rem;
 }
+
+.login-container > span > p{
+  cursor: pointer;
+  color:blue;
+  display: inline;
+}
