@@ -26,5 +26,18 @@ const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 export { projectStorage, projectFirestore, timestamp };
 
+export const fireBaseApp = firebase;
+
 export const auth = firebase.auth();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+export const logOut = () => {
+  auth
+    .signOut()
+    .then(() => {
+      console.log("LogOUT SUCCESS");
+    })
+    .catch((error) => {
+      console.log("LogOUT Fail " + error);
+    });
+};

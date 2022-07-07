@@ -5,6 +5,7 @@ import ImageGrid from "./imageGrid";
 import Modal from "./Modal";
 import { UserContext } from "../provider/UserProvider";
 import { useNavigate } from "react-router-dom";
+import { logOut } from "../firebase/config";
 
 export const DashBoard = () => {
   const user = useContext(UserContext);
@@ -30,6 +31,9 @@ export const DashBoard = () => {
       {selectedImg && (
         <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
       )}
+      <button className="logOut" onClick={logOut}>
+        <span>Log Out</span>
+      </button>
     </div>
   );
 };

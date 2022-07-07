@@ -1,9 +1,10 @@
 import React from "react";
+import { auth } from "../firebase/config";
 import useFirestore from "../hooks/useFirestore";
 
 const ImageGrid = ({ setSelectedImg }) => {
   const { docs } = useFirestore("images");
-  console.log(docs);
+  console.log(auth);
   return (
     <div className="img-grid">
       {docs &&

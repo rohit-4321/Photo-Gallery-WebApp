@@ -9,13 +9,17 @@ export default ({ children }) => {
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
+      console.log("state changes............................................");
       if (user) {
         const { displayName, email, uid } = user;
+        console.log("User in User Provider = " + user);
         setUser({
           displayName,
           email,
           uid,
         });
+      } else {
+        setUser(null);
       }
     });
   }, []);
