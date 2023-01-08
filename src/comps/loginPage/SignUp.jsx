@@ -10,7 +10,6 @@ export const SignUp = ({ signUp, onLogInClick, signInWithGoogle }) => {
   const [authState, setAuthState] = useState(SignUpState.idle);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("as");
     signUp(email, password, setAuthState);
   };
   return (
