@@ -17,8 +17,6 @@ const useFirestore = (collection) => {
         .onSnapshot((snap) => {
           let documents = [];
           snap.forEach((doc) => {
-            console.log(" Use FireStore = " + doc.data());
-            console.log("Use Firestore " + doc.id);
             documents.push({ ...doc.data(), id: doc.id });
           });
           setDocs(documents);
@@ -34,3 +32,18 @@ const useFirestore = (collection) => {
   return { docs };
 };
 export default useFirestore;
+
+export const FireStoreDelete = (docId) => {
+  const user = useContext(UserContext);
+    if (user) {
+        projectFirestore
+        .collection("users")
+        .doc(user.uid)
+        .collection("images")
+        .doc(docId)
+        .delete()
+        .then(()=> {
+          console.log('delted')
+        })
+    }
+}

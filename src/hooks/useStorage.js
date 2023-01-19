@@ -14,8 +14,10 @@ const useStorage = (file) => {
   const user = useContext(UserContext);
 
   useEffect(() => {
-    const strorageRef = projectStorage.ref(file.name);
+    var time = new Date();
+    const strorageRef = projectStorage.ref(file.name + time);
     const collectionRef = projectFirestore.collection("users");
+    console.log(file.size);
 
     strorageRef.put(file).on(
       "state_changed",
@@ -33,8 +35,7 @@ const useStorage = (file) => {
         collectionRef
           .doc(user.uid)
           .collection("images")
-          .add({ url, createdAt });
-
+          .add({ url, createdAt, name: file.name, size: file.size });
         setUrl(url);
       }
     );

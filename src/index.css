@@ -16,7 +16,8 @@ body{
   position: relative;
   font-family: "Noto Serif";
   color: var(--secondary);
-  background-color: #121212;
+  background-color: #683131;
+ background-image: url("main.jpeg");
   position: relative;
   height: 100vh;
   width: 100%;
@@ -29,23 +30,33 @@ body{
   /* background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%); */
 }
 .title h1{
-  color: var(--primary);
+
+  color: #1c71d3;
   font-size: 1.2rem;
-  letter-spacing: 2px;
+  letter-spacing: 5px;
   font-weight: normal;
 }
 .title h2, .title p{
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 15px;
   text-align: center;
+  color: #0a0a0a;
+  
 }
 .title h2{
-  color: var(--primary);
+  color:#2778db;
+  border: none;
+  padding: 5px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px 1px #0a0a0a;
   margin-top: 60px;
   font-size: 2.6rem;
 }
 
 /* upload form styles */
 form{
-  margin: 30px auto 10px;
+  margin: 30px auto 20px;
   text-align: center;
 }
 label input{
@@ -55,14 +66,14 @@ label input{
 }
 label{
   display: block;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--primary);
+  width: 40px;
+  height: 40px;
+  border: 2px solid;
   border-radius: 50%;
-  margin: 10px auto;
+  margin: 5px auto;
   line-height: 30px;
-  color: var(--primary);
-  font-weight: bold;
+  color: #1c71d3;
+  font-weight: bolder;
   font-size: 24px;
 }
 label:hover{
@@ -81,7 +92,8 @@ label:hover{
 /* progress bar styles */
 .progress-bar{
   height:5px;
-  background :var(--primary);
+  background-color: #1c71d3;
+  text-shadow: #0a0a0a;
   margin-top: 20px;
 
 }
@@ -105,23 +117,106 @@ label:hover{
 .img-wrap img{
   min-width: 100%;
   min-height: 100%;
-  max-width: 150%;
+  max-width: 100%;
   position: absolute;
+  border: 5px solid;
+  border-color: #0a0a0a;
+
   top: 0;
   left: 0;
 }
+/* ------------------ */
+.img-wrap .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #b46c6c;
+  display: flex;
+  flex-direction: column;
+}
+
+.img-wrap:hover .overlay{
+  opacity: 1;
+}
+.img-wrap .overlay .delete-img {
+  margin-top: auto;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  
+}
+
+
+
+.img-wrap .overlay .delete-img button {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.img-wrap .overlay .delete-img button {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+
+
+
+
+.img-wrap .overlay .img-name {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-style: oblique;
+  color: aliceblue;
+  
+
+}
+.img-wrap .overlay .createdAt {
+  margin-left: 10px;
+  color: aliceblue;
+
+
+}
+/* ////////////// */
+/* LogOUt */
 .logOut{
   position: fixed;
   z-index: 2;
-  bottom: 0%;
+  top: 0%;
   right: 0%;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  background-color: #ff6a00;
+  margin-right: 1.5rem;
+  margin-top: 1.5rem;
+  background-color: #1c71d3;
   padding: 0.5rem 0.8rem;
   border: none;
-  border-radius: 50px;
-  box-shadow: 0 0 10px 1px #ff6203;
+  border-radius: 80px;
+  box-shadow: 0 0 10px 1px #0a0a0a;
   transition: all 0.2s ease;
 }
 .logOut:hover{
@@ -143,7 +238,7 @@ label:hover{
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(8, 8, 8, 0.5);
 }
 .backdrop img{
   display: block;
@@ -168,7 +263,8 @@ label:hover{
 /* Log in ----------------------------- Style */
 
 .login-screen{
-  background-color: #121212;
+ 
+  background-image: url("bg.jpeg");
   position: relative;
   height:100vh;
   width:100vw;
@@ -200,8 +296,6 @@ label:hover{
   width: 100%;
   text-align: start;
 
-  /* justify-content: flex-start; */
-  /* background-color: red; */
 }
 .inputContainer > p:first-of-type{
   color: rgb(159, 159, 159);

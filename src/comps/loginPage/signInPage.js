@@ -21,6 +21,9 @@ export const SignInPage = () => {
     navigate("dashboard");
   }
 
+  const [pageState, setPageState] = useState("login");
+
+
   const signInWithGoogle = () => {
     auth
       .signInWithPopup(googleProvider)
@@ -64,7 +67,6 @@ export const SignInPage = () => {
       });
   };
 
-  const [pageState, setPageState] = useState("login");
   return (
     <div className="login-screen">
       {pageState === "login" ? (

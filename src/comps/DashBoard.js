@@ -11,7 +11,6 @@ export const DashBoard = () => {
   const user = useContext(UserContext);
   const [redirect, setredirect] = useState(null);
   const [selectedImg, setSelectedImg] = useState(null);
-
   const navigator = useNavigate();
 
   useEffect(() => {
@@ -22,18 +21,20 @@ export const DashBoard = () => {
   if (redirect) {
     navigator(redirect);
   }
+  
 
   return (
     <div className="App">
       <Title />
-      <UploadForm />
-      <ImageGrid setSelectedImg={setSelectedImg} />
-      {selectedImg && (
-        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-      )}
       <button className="logOut" onClick={logOut}>
         <span>Log Out</span>
       </button>
+      <UploadForm />
+      <ImageGrid setSelectedImg={setSelectedImg}/>
+      {selectedImg && (
+        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+      )}
+      
     </div>
   );
 };
