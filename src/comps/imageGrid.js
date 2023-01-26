@@ -4,7 +4,8 @@ import useFirestore from "../hooks/useFirestore";
 // import { FireStoreDelete } from "../hooks/useFirestore";
 import { projectFirestore } from "../firebase/config";
 import { UserContext } from "../provider/UserProvider";
-// import { AiFillDelete } from 'react-icons/fa';
+import { AiFillDelete } from 'react-icons/ai';
+import { HiArrowsExpand } from 'react-icons/hi';
 
 const convertTime = (doc) => {
   if( doc.createdAt && doc.createdAt.seconds && doc.createdAt.nanoseconds){
@@ -16,6 +17,14 @@ const convertTime = (doc) => {
   }
   return '--'; 
 }
+const ImgFields = ({fieldName, value}) => {
+  return <div>
+  <span className="img-field">
+    {fieldName}:
+  </span>
+  <span className="img-value"> {value}</span>
+  </div>
+}
 const ImageGrid = ({ setSelectedImg }) => {
   const { docs } = useFirestore("images");
   const user = useContext(UserContext);
@@ -24,7 +33,7 @@ const ImageGrid = ({ setSelectedImg }) => {
     console.log(docs);
   },[docs]);
   const handleImageClick = (e, url) => {
-    if(e.target.className === 'single-img'){
+    if(e.target.className === 'expand-img'){
       setSelectedImg(url);
     }
   }
@@ -52,24 +61,30 @@ const ImageGrid = ({ setSelectedImg }) => {
             <div
               className="img-wrap"
               key={doc.id}
-              onClick={(e) => {
-                handleImageClick(e, doc.url);
-              }}
             >
               <img src={doc.url} alt="uploadedImage" className="single-img" />
               <div className="overlay">
-                <span className="img-name">Name: {doc.name}</span>
-                <span className="createdAt">CreatedAt: {convertData}</span>
+                <ImgFields fieldName={'Name'} value={doc.name}/>
+                {/* <span className="img-name">Name: {doc.name}</span> */}
+                <ImgFields fieldName={'CreatedAt'} value={convertData}/>
+                {
+                    doc.size && <ImgFields fieldName={'Size'} value={`${parseFloat(doc.size / 1024).toFixed(2)} MB`}/>
+                }
                 <span className="delete-img" onClick={(e)=> {
                   handleDeleteImg(e, doc);
                 }}>
-                  {
-                    doc.size && <span className="createdAt">
-                      Size: {doc.size / 1024} MB
-                    </span>
-                  }
-                    <button>Delete</button>
-                    {/* <AiFillDelete /> */}
+                    <AiFillDelete color="white" size={35} />
+                </span>
+                <span
+                className="expand-img"
+                onClick={(e) => {
+                  handleImageClick(e, doc.url);
+                }} >
+                  <HiArrowsExpand
+                  className="single-img"
+                  color="white"
+                  size={35}
+                  />
                 </span>
               </div>
             </div>
